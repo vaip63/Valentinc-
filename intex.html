@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <title>Valentine 💘</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="card">
+
+  <h1>Will you be my Valentine? 💕</h1>
+
+  <div class="buttons">
+    <button id="yes">YES</button>
+    <button id="no">NO</button>
+  </div>
+
+  <div id="menu">
+    <h2>Choose 💖</h2>
+    <button onclick="showSection('message')">💌 Message</button>
+    <button onclick="showSection('memories')">📸 Memories</button>
+    <button onclick="showSection('gift')">🎁 Gift</button>
+  </div>
+
+  <div id="message" class="section">
+    <p>De Ziua Îndrăgostiților vreau să-ți spun cât de mult însemni pentru mine ❤️</p>
+    <p>Ești cel <b>Home</b> care mi-a arătat dragostea adevărată.</p>
+    <p><b>Te iubesc bibica mea❤️</b></p>
+  </div>
+
+  <div id="memories" class="section gallery">
+    <div class="row">
+      <img src="assets/img/1.jpg" alt="">
+      <img src="assets/img/2.jpg" alt="">
+    </div>
+    <div class="row center">
+      <video controls>
+        <source src="assets/video/memory.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+
+  <div id="gift" class="section">
+    <p>Am un cadou pentru tine… 🎁</p>
+    <button onclick="startGift()">Deschide 💖</button>
+    <p id="typewriter"></p>
+  </div>
+
+</div>
+
+<canvas id="confetti"></canvas>
+<audio id="music" src="assets/music/song.mp3"></audio>
+
+<script src="script.js"></script>
+</body>
+</html>
