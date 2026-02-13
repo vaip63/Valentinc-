@@ -3,7 +3,7 @@ const no = document.getElementById("no");
 const menu = document.getElementById("menu");
 const music = document.getElementById("music");
 
-const giftText = "Cadoul meu sunt eu, timpul meu și toată iubirea mea ❤️";
+const giftText = "Cadoul tău sunt eu, timpul meu și toată iubirea mea ❤️";
 let giftIndex = 0;
 
 /* Reset la start */
