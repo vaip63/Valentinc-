@@ -6,37 +6,40 @@ const music = document.getElementById("music");
 const giftText = "Cadoul meu sunt eu, timpul meu și toată iubirea mea ❤️";
 let giftIndex = 0;
 
-/* HARD RESET LA START */
-document.querySelectorAll(".section").forEach(sec => {
-  sec.style.display = "none";
-});
-menu.style.display = "none";
+/* RESET LA START */
+window.onload = () => {
+  document.querySelectorAll(".section").forEach(sec => sec.style.display = "none");
+  menu.style.display = "none";
+};
 
-/* NO fuge 😈 */
+/* NO fuge */
 no.addEventListener("mouseover", () => {
-  const x = Math.random() * 200 - 100;
-  const y = Math.random() * 200 - 100;
-  no.style.transform = translate(${x}px, ${y}px);
+  const maxX = 150;
+  const maxY = 120;
+  const x = Math.random() * maxX - maxX/2;
+  const y = Math.random() * maxY - maxY/2;
+
+  no.style.transform = `translate(${x}px, ${y}px)`;
 });
 
-/* YES = green light */
+/* YES */
 yes.addEventListener("click", () => {
   document.querySelector(".buttons").style.display = "none";
   menu.style.display = "block";
-  music.play().catch(() => {});
+
+  music.currentTime = 0;
+  music.play().catch(()=>{});
+
   launchConfetti();
 });
 
-/* AFIȘARE SECȚIUNI */
+/* AFISARE SECTIUNI */
 function showSection(id) {
-  document.querySelectorAll(".section").forEach(sec => {
-    sec.style.display = "none";
-  });
-
+  document.querySelectorAll(".section").forEach(sec => sec.style.display = "none");
   document.getElementById(id).style.display = "block";
 }
 
-/* GIFT – TYPEWRITER */
+/* TYPEWRITER */
 function startGift() {
   const el = document.getElementById("typewriter");
   el.innerHTML = "";
@@ -46,17 +49,22 @@ function startGift() {
     el.innerHTML += giftText[giftIndex];
     giftIndex++;
     if (giftIndex >= giftText.length) clearInterval(interval);
-  }, 60);
+  }, 50);
 }
 
 /* CONFETTI */
 function launchConfetti() {
   const canvas = document.getElementById("confetti");
   const ctx = canvas.getContext("2d");
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
 
-  const pieces = Array.from({ length: 120 }, () => ({
+  function resize(){
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener("resize", resize);
+
+  const pieces = Array.from({ length: 140 }, () => ({
     x: Math.random() * canvas.width,
     y: Math.random() * canvas.height,
     r: Math.random() * 6 + 2,
@@ -64,15 +72,17 @@ function launchConfetti() {
   }));
 
   function animate() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    pieces.forEach(p => {
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    pieces.forEach(p=>{
       ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = "#ff4d6d";
+      ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle="#ff4d6d";
       ctx.fill();
       p.y += p.dy;
-      if (p.y > canvas.height) p.y = 0;
+      if(p.y > canvas.height) p.y = 0;
     });
+
     requestAnimationFrame(animate);
   }
 
