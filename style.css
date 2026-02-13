@@ -1,0 +1,95 @@
+body {
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.card {
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  width: 420px;
+  text-align: center;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+  position: relative;
+  z-index: 1;
+
+  overflow: hidden; 
+}
+
+
+button {
+  padding: 14px 26px;
+  margin: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: scale(1.1);
+}
+
+#yes {
+  background: #ff4d6d;
+  color: white;
+}
+
+#no {
+  background: #ccc;
+}
+
+/* ASCUNDERE TOTALĂ LA START */
+#menu,
+.section {
+  display: none;
+}
+
+.section {
+  margin-top: 20px;
+}
+
+.gallery {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.gallery .row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.gallery .row.center {
+  justify-content: center;
+}
+
+.gallery img {
+  width: 150px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.gallery video {
+  width: 200px;
+  height: 260px;
+  border-radius: 12px;
+}
+
+#confetti {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
